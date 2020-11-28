@@ -50,3 +50,6 @@ A hook that adds and updates a set of common uniforms to your shader material:
 - `vec2 u_mouse` the normalized mouse position, update every frame (from r3f state)
 
 TODO: Add shadertoy variant
+
+
+🇮🇹 Ombrawhat? Ombra is `shadow` in Italian.  
