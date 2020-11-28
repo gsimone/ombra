@@ -1,3 +1,5 @@
+<img src="https://github.com/gsimone/ombra/blob/main/logo.png?raw=true" width="400" />
+
 # ▓ Ombra
 
 Ombra is a collection of components and abstractions to help working with shaders in react-three-fiber.
