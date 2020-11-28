@@ -1,4 +1,4 @@
-<img src="https://github.com/gsimone/ombra/blob/main/logo.png?raw=true" width="400" />
+![ombra](https://github.com/gsimone/ombra/blob/main/logo.png?raw=true)
 
 # ▓ Ombra
 
