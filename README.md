@@ -9,6 +9,10 @@
 
 Ombra is a collection of components and abstractions to help working with shaders in react-three-fiber.
 
+```
+yarn add ombra 
+```
+
 ### Components
 
 #### ScreenQuad
