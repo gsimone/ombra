@@ -1,5 +1,10 @@
 ![ombra](https://github.com/gsimone/ombra/blob/main/_logo.png?raw=true)
 
+
+[![Version](https://img.shields.io/npm/v/ombra?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/ombra)
+[![Downloads](https://img.shields.io/npm/dt/ombra.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/ombra)
+[![Discord Shield](https://img.shields.io/discord/740090768164651008?style=flat&colorA=000000&colorB=000000&label=discord&logo=discord&logoColor=ffffff)](https://discord.gg/ZZjjNvJ)
+
 # ▓ Ombra
 
 Ombra is a collection of components and abstractions to help working with shaders in react-three-fiber.
