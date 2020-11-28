@@ -1,0 +1,76 @@
+{
+  "version": "0.1.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "ombra",
+  "author": "Gianmarco Simone",
+  "module": "dist/ombra.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/ombra.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/ombra.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@size-limit/preset-small-lib": "^4.9.0",
+    "@storybook/addon-essentials": "^6.1.8",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.1.8",
+    "@storybook/addons": "^6.1.8",
+    "@storybook/react": "^6.1.8",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "babel-loader": "^8.2.2",
+    "husky": "^4.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-is": "^17.0.1",
+    "size-limit": "^4.9.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@react-three/drei": "^2.2.7",
+    "react-three-fiber": "^5.3.3",
+    "three": "^0.123.0"
+  }
+}
