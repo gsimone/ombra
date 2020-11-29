@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "react-app-polyfill": "^1.0.0",
+    "react-use-gesture": "^8.0.1",
     "wouter": "^2.6.0"
   },
   "alias": {
