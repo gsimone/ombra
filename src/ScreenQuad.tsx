@@ -28,7 +28,7 @@ export const ScreenQuad = forwardRef<THREE.Mesh, ScreenQuadProps>(function Scree
   }, [])
 
   const { viewport } = useThree()
-  const scale = useAspect('cover', viewport.width, viewport.height, viewport.factor)
+  const scale = useAspect('cover', viewport.width * viewport.factor, viewport.height * viewport.factor, 0.5)
   
   return (
     // @ts-expect-error scale type isn't checked correctly

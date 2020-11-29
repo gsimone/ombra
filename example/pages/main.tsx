@@ -33,15 +33,7 @@ float grid(vec2 st, float res){
 }
 
 void main() {
-  vec2 st = gl_FragCoord.st/u_resolution.xy;
-  st.x *= u_resolution.x/u_resolution.y;
-
-  vec2 grid_uv = (st + vec2(u_time * .1, 0.)) * u_resolution.y; 
-  float x = grid(grid_uv, .01);
-
-  vec3 col = max(vec3(x), vec3(u_mouse, 0.));
-  
-  gl_FragColor = vec4(col, 1.);
+  gl_FragColor = vec4(vUv, 0., 1.);
 }
 `)
 
