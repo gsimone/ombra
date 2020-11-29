@@ -1,7 +1,9 @@
 import * as THREE from 'three'
+
 import React, { forwardRef, useMemo } from 'react'
 import { useAspect } from '@react-three/drei'
-import { Mesh } from 'three';
+import { useThree } from 'react-three-fiber';
+
 
 export function createScreenQuadGeometry() {
   const geometry = new THREE.BufferGeometry();
@@ -19,13 +21,14 @@ type ScreenQuadProps = {
   children: JSX.Element  
 }
 
-export const ScreenQuad = forwardRef<Mesh, ScreenQuadProps>(function ScreenQuad({children}, ref) {
+export const ScreenQuad = forwardRef<THREE.Mesh, ScreenQuadProps>(function ScreenQuad({children}, ref) {
 
   const geometry = useMemo(() => {
     return createScreenQuadGeometry()
   }, [])
 
-  const scale = useAspect('cover', window.innerWidth, window.innerHeight)
+  const { viewport } = useThree()
+  const scale = useAspect('cover', viewport.width, viewport.height, viewport.factor)
   
   return (
     // @ts-expect-error scale type isn't checked correctly
