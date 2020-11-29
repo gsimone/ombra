@@ -3,8 +3,8 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "react-three-fiber";
 
 export function useRenderTargetTexture(
-  width,
-  height,
+  width: number,
+  height: number,
   settings = {
     format: THREE.RGBAFormat,
     stencilBuffer: false,
@@ -25,9 +25,11 @@ export function useRenderTargetTexture(
   }, []);
 
   useFrame((state) => {
-    state.gl.setRenderTarget(target);
-    state.gl.render(scene, camera.current);
-    state.gl.setRenderTarget(null);
+    if (camera.current) {
+      state.gl.setRenderTarget(target);
+      state.gl.render(scene, camera.current!);
+      state.gl.setRenderTarget(null);
+    }
   });
 
   return { camera, scene, texture: target.texture };
