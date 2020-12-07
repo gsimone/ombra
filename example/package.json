@@ -8,7 +8,9 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@react-spring/three": "^9.0.0-rc.3",
     "react-app-polyfill": "^1.0.0",
+    "react-spring": "^8.0.27",
     "react-use-gesture": "^8.0.1",
     "wouter": "^2.6.0"
   },

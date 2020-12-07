@@ -177,8 +177,6 @@ function Scene() {
 }
 
 const App = () => {
-  
-  
   return (
     <Canvas >
       <Scene />

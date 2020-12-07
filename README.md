@@ -51,5 +51,41 @@ A hook that adds and updates a set of common uniforms to your shader material:
 
 TODO: Add shadertoy variant
 
+#### FBOGUI [WIP]
+
+A GUI helper for framebuffer objects, currently WIP
+
+#### usePiP 
+
+Hook used to build FBOGUI, see more here:
+[See more here](https://twitter.com/ggsimm/status/1335565094000922626)
+
+#### useFBO
+
+```
+const myBuffer = useFBO({
+  width: 1024,      // Buffer width, defaults to window width * DPI
+  height: 1024      // Buffer height, defaults to window width * DPI,
+  settings: { ... } // Any valid WebglRenderTarget option https://threejs.org/docs/#api/en/renderers/WebGLRenderTarget
+})
+```
+
+Creates and returns a memoized WebglRenderTarget.
+
+
+#### usePrototypeTexture (Suspense)
+
+```
+const texture = usePrototypeTexture(
+  color // any valid color, you can check the types to see what's avaialable
+)
+```
+
+Loads a 512x512 prototype texture, useful for demos. 
+From this Unity asset: https://assetstore.unity.com/packages/2d/textures-materials/gridbox-prototype-materials-129127
+
+The textures are served via githack and hosted in this repo https://github.com/gsimone/gridbox-prototype-materials
+
+---
 
 🇮🇹 Ombrawhat? Ombra is `shadow` in Italian.  

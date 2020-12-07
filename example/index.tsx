@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 const Main = React.lazy(() => import('./pages/main'))
 const SDF = React.lazy(() => import('./pages/sdf'))
+const Depth = React.lazy(() => import('./pages/depth'))
 
 import { Switch, Route } from 'wouter'
 
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/sdf">
           {() => <SDF />}
+        </Route>
+        <Route path="/depth">
+          {() => <Depth />}
         </Route>
       </Switch>
     </React.Suspense>
