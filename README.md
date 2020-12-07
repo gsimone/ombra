@@ -62,7 +62,7 @@ Hook used to build FBOGUI, see more here:
 
 #### useFBO
 
-```
+```jsx
 const myBuffer = useFBO({
   width: 1024,      // Buffer width, defaults to window width * DPI
   height: 1024      // Buffer height, defaults to window width * DPI,
@@ -75,7 +75,7 @@ Creates and returns a memoized WebglRenderTarget.
 
 #### usePrototypeTexture (Suspense)
 
-```
+```jsx
 const texture = usePrototypeTexture(
   color // any valid color, you can check the types to see what's avaialable
 )
