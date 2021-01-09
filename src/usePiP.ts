@@ -1,37 +1,42 @@
 import * as React from 'react';
 import { useSpring } from '@react-spring/three';
 import { useDrag } from 'react-use-gesture';
+import { useThree } from 'react-three-fiber';
 
-const r = window.innerWidth / window.innerHeight;
-const FOB_W = 450;
-const FOB_H = FOB_W / r;
+const FBO_W = 450;
 const MARGIN = 20;
 
-export const POSITIONS: Record<string, number[]> = {
-  LEFT: [-window.innerWidth / 2 + FOB_W / 2 + MARGIN, 0],
-  TOP_LEFT: [
-    -window.innerWidth / 2 + FOB_W / 2 + MARGIN,
-    window.innerHeight / 2 - FOB_H / 2 - MARGIN,
-  ],
-  TOP: [0, window.innerHeight / 2 - FOB_H / 2 - MARGIN],
-  TOP_RIGHT: [
-    window.innerWidth / 2 - FOB_W / 2 - MARGIN,
-    window.innerHeight / 2 - FOB_H / 2 - MARGIN,
-  ],
-  RIGHT: [window.innerWidth / 2 - FOB_W / 2 - MARGIN, 0],
-  BOTTOM_RIGHT: [
-    window.innerWidth / 2 - FOB_W / 2 - MARGIN,
-    -window.innerHeight / 2 + FOB_H / 2 + MARGIN,
-  ],
-  BOTTOM_LEFT: [
-    -window.innerWidth / 2 + FOB_W / 2 + MARGIN,
-    -window.innerHeight / 2 + FOB_H / 2 + MARGIN,
-  ],
-  BOTTOM: [0, -window.innerHeight / 2 + FOB_H / 2 + MARGIN],
+export const getPositions: (width?: number, margin?: number) => Record<string, number[]> = (width = FBO_W, margin = MARGIN) => {
+
+  const height = width / (window.innerWidth/window.innerHeight)
+  
+  return {
+    LEFT: [-window.innerWidth / 2 + width / 2 + margin, 0],
+    TOP_LEFT: [
+      -window.innerWidth / 2 + width / 2 + margin,
+      window.innerHeight / 2 - height / 2 - margin,
+    ],
+    TOP: [0, window.innerHeight / 2 - height / 2 - margin],
+    TOP_RIGHT: [
+      window.innerWidth / 2 - width / 2 - margin,
+      window.innerHeight / 2 - height / 2 - margin,
+    ],
+    RIGHT: [window.innerWidth / 2 - width / 2 - margin, 0],
+    BOTTOM_RIGHT: [
+      window.innerWidth / 2 - width / 2 - margin,
+      -window.innerHeight / 2 + height / 2 + margin,
+    ],
+    BOTTOM_LEFT: [
+      -window.innerWidth / 2 + width / 2 + margin,
+      -window.innerHeight / 2 + height / 2 + margin,
+    ],
+    BOTTOM: [0, -window.innerHeight / 2 + height / 2 + margin],
+  }
 };
 
 export function usePip(
   ref: React.RefObject<THREE.Mesh>,
+  width: number,
   position: number[],
   callback?: (isActive: boolean) => void
 ) {
@@ -41,6 +46,13 @@ export function usePip(
     'position-x': DEF_POS_X,
     'position-y': DEF_POS_Y,
   }));
+    
+  const { viewport } = useThree()
+
+  const positions = React.useMemo(() => {
+    return getPositions(width)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewport.width, viewport.height])
 
   const bind = useDrag(
     ({ down, last, movement: [x, y], metaKey }) => {
@@ -63,7 +75,7 @@ export function usePip(
         }
 
         if (p.length > 0) {
-          defaultPosition = POSITIONS[p.join('_')];
+          defaultPosition = positions[p.join('_')];
         }
       }
 

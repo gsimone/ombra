@@ -15,5 +15,5 @@ export function useFBO({
   return useMemo(() => {
     const target = new THREE.WebGLRenderTarget(width, height, settings);
     return target;
-  }, [settings]);
+  }, [width, height, settings]);
 }
