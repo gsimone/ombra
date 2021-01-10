@@ -17,7 +17,7 @@ export function createScreenQuadGeometry() {
 
 type ScreenQuadProps = {
   children: JSX.Element;
-  scale: [x: number, y: number, z: number]
+  scale?: number[];
 };
 
 export const ScreenQuad = forwardRef<THREE.Mesh, ScreenQuadProps>(
@@ -27,12 +27,13 @@ export const ScreenQuad = forwardRef<THREE.Mesh, ScreenQuadProps>(
     }, []);
 
     const { viewport } = useThree();
-    const localScale = React.useMemo(() => 
-      [ viewport.width * viewport.factor, viewport.height * viewport.factor, ], 
-      [viewport.width, viewport.height, viewport.factor]
-    )
-  
+    const localScale = React.useMemo(
+      () => [viewport.width * 0.5, viewport.height * 0.5],
+      [viewport.width, viewport.height]
+    );
+
     return (
+      // @ts-ignore
       <mesh scale={scale || localScale} ref={ref} geometry={geometry}>
         {children}
       </mesh>

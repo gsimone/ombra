@@ -6,10 +6,12 @@ import { useThree } from 'react-three-fiber';
 const FBO_W = 450;
 const MARGIN = 20;
 
-export const getPositions: (width?: number, margin?: number) => Record<string, number[]> = (width = FBO_W, margin = MARGIN) => {
+export const getPositions: (
+  width?: number,
+  margin?: number
+) => Record<string, number[]> = (width = FBO_W, margin = MARGIN) => {
+  const height = width / (window.innerWidth / window.innerHeight);
 
-  const height = width / (window.innerWidth/window.innerHeight)
-  
   return {
     LEFT: [-window.innerWidth / 2 + width / 2 + margin, 0],
     TOP_LEFT: [
@@ -31,7 +33,7 @@ export const getPositions: (width?: number, margin?: number) => Record<string, n
       -window.innerHeight / 2 + height / 2 + margin,
     ],
     BOTTOM: [0, -window.innerHeight / 2 + height / 2 + margin],
-  }
+  };
 };
 
 export function usePip(
@@ -46,13 +48,13 @@ export function usePip(
     'position-x': DEF_POS_X,
     'position-y': DEF_POS_Y,
   }));
-    
-  const { viewport } = useThree()
+
+  const { viewport } = useThree();
 
   const positions = React.useMemo(() => {
-    return getPositions(width)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewport.width, viewport.height])
+    return getPositions(width);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewport.width, viewport.height]);
 
   const bind = useDrag(
     ({ down, last, movement: [x, y], metaKey }) => {

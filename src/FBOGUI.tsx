@@ -87,7 +87,7 @@ function Plane({ setActive, width, position, fbo, camera }: PlaneProps) {
     [setTooltipPosition, fbo, gl, setTooltipData]
   );
 
-  const size = [width, 300 / ( window.innerWidth / window.innerHeight )]
+  const size = [width, 300 / (window.innerWidth / window.innerHeight)];
 
   return (
     <>
@@ -180,11 +180,11 @@ export function Tooltip() {
 export function FBOGUI({
   fbos,
   onActive,
-  renderPriority = 1000
+  renderPriority = 1000,
 }: {
   onActive?: (isActive: boolean) => void;
   fbos: THREE.WebGLRenderTarget[];
-  renderPriority?: number
+  renderPriority?: number;
 }) {
   const [fboScene] = React.useState(() => new THREE.Scene());
   const camera = useResource<THREE.OrthographicCamera>();
@@ -196,18 +196,18 @@ export function FBOGUI({
   }, renderPriority);
 
   useEffect(() => {
-    if (typeof onActive === "function") {
+    if (typeof onActive === 'function') {
       onActive(active);
     }
   }, [onActive, active]);
 
-  const { viewport } = useThree()
-  
+  const { viewport } = useThree();
+
   const POSITIONS = React.useMemo(() => {
-    return getPositions(300)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewport.width, viewport.height]) 
-  
+    return getPositions(300);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewport.width, viewport.height]);
+
   return (
     <>
       {createPortal(
