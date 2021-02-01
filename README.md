@@ -75,6 +75,8 @@ Creates and returns a memoized WebglRenderTarget.
 
 #### usePrototypeTexture (Suspense)
 
+📦 https://codesandbox.io/s/ombra-prototype-dt02k?file=/src/index.js
+
 ```jsx
 const texture = usePrototypeTexture(
   color // any valid color, you can check the types to see what's avaialable
