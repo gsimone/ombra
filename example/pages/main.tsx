@@ -1,15 +1,19 @@
-import 'react-app-polyfill/ie11';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { ShaderMaterial } from 'three';
+import "react-app-polyfill/ie11";
+import * as React from "react";
+import { ShaderMaterial } from "three";
 
-import { Canvas, extend } from 'react-three-fiber';
-import { OrbitControls, OrthographicCamera, Plane, shaderMaterial } from '@react-three/drei';
+import { Canvas, extend } from "@react-three/fiber;
+import {
+  OrthographicCamera,
+  shaderMaterial,
+  ScreenQuad,
+} from "@react-three/drei";
 
-import { useBasicUniforms, ScreenQuad } from '../../src/index';
-import { useTweaks } from 'use-tweaks';
+import { useBasicUniforms } from "../../src/index";
 
-const MyMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
+const MyMaterial = shaderMaterial(
+  useBasicUniforms.uniforms,
+  /*glsl*/ `
   varying vec2 vUv;
 
   void main()	{
@@ -17,7 +21,8 @@ const MyMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
     
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
   }
-`, /*glsl*/`
+`,
+  /*glsl*/ `
   uniform vec3 u_mouse; 
   uniform vec3 u_resolution;
   uniform float u_time;
@@ -27,10 +32,12 @@ const MyMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
   void main() {
     gl_FragColor = vec4(vUv, 1., 1.);
   }
-`)
+`
+);
 
-
-const AnotherMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
+const AnotherMaterial = shaderMaterial(
+  useBasicUniforms.uniforms,
+  /*glsl*/ `
   varying vec2 vUv;
 
   void main()	{
@@ -38,7 +45,8 @@ const AnotherMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
     
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
   }
-`, /*glsl*/`
+`,
+  /*glsl*/ `
   uniform vec3 u_mouse; 
   uniform vec4 u_mouse_drag;
   uniform vec3 u_resolution;
@@ -71,31 +79,26 @@ const AnotherMaterial = shaderMaterial(useBasicUniforms.uniforms, /*glsl*/`
 
     gl_FragColor = bg + col;
   }
-`)
+`
+);
 
-extend({ MyMaterial, AnotherMaterial })
+extend({ MyMaterial, AnotherMaterial });
 
 function Scene() {
-  
-
-  const opts = useTweaks("mouse", {
-    invertX: true,
-    invertY: true,
-    lerp: 0.4
-  })
-
-  const second = React.useRef<ShaderMaterial>(null)
+  const second = React.useRef<ShaderMaterial>(null);
   useBasicUniforms(second, {
-    mouse: opts
-  })
-  
+    mouse: {
+      lerp: 0.5,
+    },
+  });
+
   return (
     <>
       <ScreenQuad>
         <anotherMaterial ref={second} />
       </ScreenQuad>
     </>
-  )
+  );
 }
 
 const App = () => {
@@ -108,4 +111,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;

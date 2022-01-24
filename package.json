@@ -1,7 +1,7 @@
 {
   "version": "0.2.0",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/ombra.cjs.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -17,9 +17,7 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "analyze": "size-limit --why"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -50,12 +48,8 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@preconstruct/cli": "^2.1.5",
     "@size-limit/preset-small-lib": "^4.9.0",
-    "@storybook/addon-essentials": "^6.1.8",
-    "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-links": "^6.1.8",
-    "@storybook/addons": "^6.1.8",
-    "@storybook/react": "^6.1.8",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "babel-loader": "^8.2.2",
@@ -70,11 +64,12 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.0.0-rc.3",
-    "@react-three/drei": "^2.2.7",
+    "@react-three/drei": "^8.6.3",
+    "@react-three/fiber": "^7.0.25",
+    "@types/three": "^0.136.1",
     "immer": "^8.0.0",
-    "react-three-fiber": "^5.3.3",
     "react-use-gesture": "^8.0.1",
-    "three": "^0.123.0",
-    "zustand": "^3.2.0"
+    "three": "^0.136.0",
+    "zustand": "^3.6.9"
   }
 }

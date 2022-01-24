@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.0.0-rc.3",
+    "@react-three/fiber": "^7.0.25",
     "react-app-polyfill": "^1.0.0",
     "react-spring": "^8.0.27",
     "react-use-gesture": "^8.0.1",
@@ -19,6 +20,7 @@
   "alias": {
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom/profiling",
+    "@react-three/fiber": "../node_modules/@react-three/fiber",
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
   },
   "devDependencies": {

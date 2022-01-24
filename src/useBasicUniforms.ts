@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ShaderMaterial, Vector3, Vector4 } from 'three';
-import { useFrame, useThree } from 'react-three-fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect } from 'react';
 
 type Opts = {
